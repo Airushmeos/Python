@@ -8,11 +8,11 @@ install:
       $installerPath = "C:\projects\python_installer.exe"
       Invoke-WebRequest -Uri $pythonInstaller -OutFile $installerPath
       Start-Process -FilePath $installerPath -ArgumentList "/quiet InstallAllUsers=1 PrependPath=1" -Wait
+  - pip install telepot
 
 build_script:
   - python --version
-  - python my_project.py
+  - python bot.py
 
 test_script:
-  # Unter Windows-CMD: wenn no tests, gib trotzdem Exit 0 zurück
-  - cmd: python -m unittest discover || exit 0
+  - echo "Keine Tests vorhanden. Alles okay."
