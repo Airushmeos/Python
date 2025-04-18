@@ -11,7 +11,8 @@ install:
       Start-Process -FilePath $installerPath -ArgumentList "/quiet InstallAllUsers=1 PrependPath=1" -Wait
 
 build:
-  project: my_project.py
+  # Entferne den Verweis auf MSBuild und führe das Python-Skript aus
+  - python my_project.py  # Führe dein Python-Skript direkt aus
 
 test_script:
   - python --version  # Überprüft, ob Python korrekt installiert ist
