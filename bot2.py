@@ -5,7 +5,7 @@ import requests
 import sys
 
 BOT_TOKEN = '8061813065:AAGUI3xCQOOPDQRG7w-9NHda-ugwa00U_T0'
-PHP_API_URL = 'https://myfirstwebsite.lima-city.at/chatbot3.php'
+PHP_API_URL = 'https://myfirstwebsite.lima-city.at/KI/chatbot3.php'
 
 def handle(msg):
     chat_id = msg['chat']['id']
