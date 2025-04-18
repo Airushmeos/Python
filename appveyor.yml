@@ -10,11 +10,11 @@ install:
       Invoke-WebRequest -Uri $pythonInstaller -OutFile $installerPath
       Start-Process -FilePath $installerPath -ArgumentList "/quiet InstallAllUsers=1 PrependPath=1" -Wait
 
-build:
-  script:
-    - python --version  # Überprüft, ob Python korrekt installiert ist
-    - python my_project.py  # Führt dein Python-Skript aus
+# Hier läuft Dein "Build" – in unserem Fall einfach Python-Befehle
+build_script:
+  - python --version
+  - python my_project.py
 
+# Wenn Du noch einen separaten Test‑Step brauchst, kannst Du den so anfügen:
 test_script:
-  - python --version  # Überprüft, ob Python korrekt installiert ist
-  - python my_project.py  # Führt dein Python-Skript aus
+  - python -m unittest discover
