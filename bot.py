@@ -5,7 +5,7 @@ import random
 from datetime import datetime
 import logging
 
-BOT_TOKEN = 'DEIN_BOT_TOKEN_HIER'
+BOT_TOKEN = '8061813065:AAGUI3xCQOOPDQRG7w-9NHda-ugwa00U_T0'
 
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 
