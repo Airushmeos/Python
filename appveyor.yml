@@ -18,7 +18,7 @@ build_script:
       $proc = Start-Process -FilePath python -ArgumentList 'bot2.py' -WindowStyle Hidden -PassThru
       Write-Host "Bot gestartet mit PID $($proc.Id)"
   # 2) Warte 15 Sekunden, damit log.txt gefüllt wird
-  - ps: Start-Sleep -Seconds 60
+  - ps: Start-Sleep -Seconds 300
   # 3) Beende den Bot-Prozess
   - ps: |
       if ($proc -and -not $proc.HasExited) {
