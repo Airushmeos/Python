@@ -15,10 +15,10 @@ install:
 build_script:
   # 1) Starte den Bot in einem neuen PowerShell-Prozess und gib das Process-Objekt zurück
   - ps: |
-      $proc = Start-Process -FilePath python -ArgumentList 'bot.py' -WindowStyle Hidden -PassThru
+      $proc = Start-Process -FilePath python -ArgumentList 'bot2.py' -WindowStyle Hidden -PassThru
       Write-Host "Bot gestartet mit PID $($proc.Id)"
   # 2) Warte 15 Sekunden, damit log.txt gefüllt wird
-  - ps: Start-Sleep -Seconds 15
+  - ps: Start-Sleep -Seconds 300
   # 3) Beende den Bot-Prozess
   - ps: |
       if ($proc -and -not $proc.HasExited) {
