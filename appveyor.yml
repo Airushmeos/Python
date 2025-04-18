@@ -13,8 +13,12 @@ install:
 
 
 build_script:
-  - python --version
-  - python bot2.py
+  # 1) Bot im Hintergrund starten
+  - ps: Start-Process -FilePath python -ArgumentList "bot.py" -WindowStyle Hidden -PassThru | Out-Variable botProcess
+  # 2) ein paar Sekunden warten, damit log.txt gefüllt wird
+  - timeout /t 15
+  # 3) Prozess beenden
+  - ps: Stop-Process -Id $botProcess.Id -Force
 
 test_script:
   - echo "Keine Tests vorhanden. Alles okay."
