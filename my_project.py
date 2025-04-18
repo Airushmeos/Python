@@ -1,12 +1,24 @@
-# hello_world.py
+import telepot
+from telepot.loop import MessageLoop
+import time
 
-# Eine einfache Ausgabe
-print("Hello, World!")
+BOT_TOKEN = '8061813065:AAGUI3xCQOOPDQRG7w-9NHda-ugwa00U_T0'
 
-# Berechnung: Addition von zwei Zahlen
-zahl_1 = 5
-zahl_2 = 7
-ergebnis = zahl_1 + zahl_2
+def handle(msg):
+    chat_id = msg['chat']['id']
+    text = msg.get('text', '')
 
-# Ausgabe des Ergebnisses
-print(f"Das Ergebnis der Addition von {zahl_1} und {zahl_2} ist {ergebnis}.")
+    if text.lower() == '/start':
+        bot.sendMessage(chat_id, 'Hey! Ich bin dein Telepot-Bot.')
+    elif text.lower() == 'ping':
+        bot.sendMessage(chat_id, 'Pong!')
+    else:
+        bot.sendMessage(chat_id, f'Du hast gesagt: {text}')
+
+bot = telepot.Bot(BOT_TOKEN)
+MessageLoop(bot, handle).run_as_thread()
+
+print('Bot läuft...')
+
+while True:
+    time.sleep(10)
