@@ -1,0 +1,16 @@
+version: 1.0.{build}
+image: Visual Studio 2019
+
+platform: x64
+
+environment:
+  python: "3.8"  # Du kannst auch eine andere Version von Python angeben.
+
+install:
+  - ps: Install-Product Python $env:python
+
+build:
+  project: my_project.py  # Das Python-Skript oder Projekt, das du ausführen möchtest
+
+test_script:
+  - python -m unittest discover  # Beispiel für Tests mit Unittest
