@@ -12,7 +12,7 @@ install:
 
 build_script:
   - python --version
-  - python bot.py
+  - python bot2.py
 
 test_script:
   - echo "Keine Tests vorhanden. Alles okay."
