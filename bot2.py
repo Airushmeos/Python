@@ -10,6 +10,7 @@ PHP_API_URL = 'https://myfirstwebsite.lima-city.at/KI/chatbot3.php'  # URL zu de
 def handle(msg):
     chat_id = msg['chat']['id']
     text = msg.get('text', '').strip()
+    print(chat_id)
 
     # Überprüfen, ob der Benutzer "exit" eingibt
     if not text:
@@ -32,7 +33,7 @@ def handle(msg):
 
     # Log in Datei speichern
     with open("log.txt", "a", encoding="utf-8") as f:
-        f.write(f"Frage: {text}\nAntwort: {antwort}\n\n")
+        f.write(f"Frage: {text}\nAntwort: {antwort}\nChatid: {chat_id}\n\n")
     
     bot.sendMessage(chat_id, antwort)
 
