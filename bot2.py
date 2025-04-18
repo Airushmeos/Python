@@ -4,7 +4,7 @@ import time
 import requests
 
 BOT_TOKEN = '8061813065:AAGUI3xCQOOPDQRG7w-9NHda-ugwa00U_T0'
-PHP_API_URL = 'https://myfirstwebsite.lima-city.at/chatbot3.php'  # Hier deine PHP-Datei eintragen
+PHP_API_URL = 'https://myfirstwebsite.lima-city.at/KI/chatbot3.php'  # Hier deine PHP-Datei eintragen
 
 def handle(msg):
     chat_id = msg['chat']['id']
