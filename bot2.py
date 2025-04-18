@@ -5,12 +5,13 @@ import requests
 import sys
 
 BOT_TOKEN = '8061813065:AAGUI3xCQOOPDQRG7w-9NHda-ugwa00U_T0'
-PHP_API_URL = 'https://myfirstwebsite.lima-city.at/KI/chatbot3.php'
+PHP_API_URL = 'https://myfirstwebsite.lima-city.at/KI/chatbot3.php'  # URL zu deiner PHP-Datei
 
 def handle(msg):
     chat_id = msg['chat']['id']
     text = msg.get('text', '').strip()
 
+    # Überprüfen, ob der Benutzer "exit" eingibt
     if not text:
         return bot.sendMessage(chat_id, "Bitte sende mir eine Nachricht!")
 
@@ -20,6 +21,7 @@ def handle(msg):
         sys.exit()
 
     try:
+        # Anfrage an dein PHP-Script
         response = requests.post(PHP_API_URL, json={"message": text})
         if response.status_code == 200:
             antwort = response.json().get("response", "Fehler bei der Antwort.")
@@ -31,7 +33,7 @@ def handle(msg):
     # Log in Datei speichern
     with open("log.txt", "a", encoding="utf-8") as f:
         f.write(f"Frage: {text}\nAntwort: {antwort}\n\n")
-
+    
     bot.sendMessage(chat_id, antwort)
 
 def start_bot():
