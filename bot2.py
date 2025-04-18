@@ -42,6 +42,7 @@ def start_bot():
     bot = telepot.Bot(BOT_TOKEN)
     MessageLoop(bot, handle).run_as_thread()
     print("Bot läuft...")
+    bot.sendMessage(5986717634, "Bot läuft...")
     while True:
         time.sleep(10)
 
