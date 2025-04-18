@@ -4,13 +4,13 @@ image: Visual Studio 2019
 platform: x64
 
 environment:
-  python: "3.8"  # Du kannst auch eine andere Version von Python angeben.
+  python: "3.8"  # Gebe die gewünschte Python-Version an
 
 install:
-  - ps: Install-Product Python $env:python
+  - ps: Install-Product Python $env:python # Dieses Kommando sollte in AppVeyor bereits funktionieren
 
 build:
-  project: my_project.py  # Das Python-Skript oder Projekt, das du ausführen möchtest
+  project: my_project.py  # Dein Python-Skript oder Projekt
 
 test_script:
-  - python -m unittest discover  # Beispiel für Tests mit Unittest
+  - python -m unittest discover  # Beispiel für Unit-Tests
