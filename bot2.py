@@ -2,9 +2,10 @@ import telepot
 from telepot.loop import MessageLoop
 import time
 import requests
+import sys
 
 BOT_TOKEN = '8061813065:AAGUI3xCQOOPDQRG7w-9NHda-ugwa00U_T0'
-PHP_API_URL = 'https://myfirstwebsite.lima-city.at/KI/chatbot3.php'  # Hier deine PHP-Datei eintragen
+PHP_API_URL = 'https://myfirstwebsite.lima-city.at/chatbot3.php'
 
 def handle(msg):
     chat_id = msg['chat']['id']
@@ -13,8 +14,12 @@ def handle(msg):
     if not text:
         return bot.sendMessage(chat_id, "Bitte sende mir eine Nachricht!")
 
+    if text.lower() == "exit":
+        bot.sendMessage(chat_id, "Bot wird beendet...")
+        print("Beende Bot durch Benutzeranfrage...")
+        sys.exit()
+
     try:
-        # Anfrage an dein PHP-Script
         response = requests.post(PHP_API_URL, json={"message": text})
         if response.status_code == 200:
             antwort = response.json().get("response", "Fehler bei der Antwort.")
@@ -23,9 +28,12 @@ def handle(msg):
     except Exception as e:
         antwort = f"Fehler: {str(e)}"
 
+    # Log in Datei speichern
+    with open("log.txt", "a", encoding="utf-8") as f:
+        f.write(f"Frage: {text}\nAntwort: {antwort}\n\n")
+
     bot.sendMessage(chat_id, antwort)
 
-# Starte Bot
 def start_bot():
     global bot
     bot = telepot.Bot(BOT_TOKEN)
